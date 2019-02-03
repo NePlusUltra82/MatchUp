@@ -95,11 +95,11 @@ $(function(){
         friends.forEach(element => {
             const timeframe = getTimeframe();
             const albumUrl = LASTFM_TOP_ALBUMS_URL
-            .replace('YOUR_API_KEY', access)
-            .replace('YOUR_USER_NAME', element)
-            .replace('DESIRED_TIMEFRAME', timeframe)
+                .replace('YOUR_API_KEY', access)
+                .replace('YOUR_USER_NAME', element)
+                .replace('DESIRED_TIMEFRAME', timeframe)
             $.getJSON(albumUrl)
-            .then(json => displayAllAlbums([json.topalbums.album[0]]))
+                .then(json => displayAllAlbums([json.topalbums.album[0]]))
         });
     }
 
