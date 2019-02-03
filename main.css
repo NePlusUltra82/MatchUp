@@ -1,9 +1,135 @@
 * {
     box-sizing: border-box;
+    font-family: 'Abril Fatface', cursive;
 }
+
+.active {
+    display: block;
+    background-color: rgb(0, 0, 0,.85);
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 90%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.clicked {
+    background-color: black;
+}
+
 img {
     display: inline-block;
-    width: 25%;
-    height: 300px;
-    margin: 5px;
+    width: 250px;
+    height: 250px;
+    margin: 20px 30px 20px 10px;
+    border-radius: 5px;
+    border: 1px white solid;
+    position: relative;
+    left: 5%;
+    right: 5%;
+    top: 20px;
+    bottom: 20px;    
+}
+
+fieldset {
+    display: block;
+    color: white;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: red solid 1px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+legend{
+    font-size: 20px;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+}
+form.input {
+    display: block;
+    height: 20px;
+    margin-bottom: 25px;
+}
+
+[for='username'], #username {
+    display: inline-block;
+    margin-top: 35px;
+    margin-right: 20px;
+}
+
+[type='radio']{
+    margin-right: 35px; 
+}
+
+[placeholder] {
+    text-align: center;
+    font-style: italic;
+}
+
+.flip-vertical-fwd:active {
+	-webkit-animation: flip-vertical-fwd 0.85s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+            animation: flip-vertical-fwd 0.85s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+            
+}
+
+@-webkit-keyframes flip-vertical-fwd {
+    0% {
+      -webkit-transform: translateZ(0) rotateY(0);
+              transform: translateZ(0) rotateY(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px) rotateY(180deg);
+              transform: translateZ(160px) rotateY(180deg);
+              background: black;
+    }
+  }
+  @keyframes flip-vertical-fwd {
+    0% {
+      -webkit-transform: translateZ(0) rotateY(0);
+              transform: translateZ(0) rotateY(0);
+    }
+    100% {
+      -webkit-transform: translateZ(160px) rotateY(180deg);
+              transform: translateZ(160px) rotateY(180deg);
+    }
+  }
+  
+
+body {
+    background: no-repeat fixed  url('https://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/62536-istock-840767090.jpg?itok=8BVrL5dB&resize=1100x1100');
+    background-size: cover;
+    color: white;
+}
+
+header, form {
+    height: 350px;
+    width: 900px;
+    background-color: black;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.85;
+}
+
+
+
+main {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }

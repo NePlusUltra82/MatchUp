@@ -30,7 +30,7 @@ $(function(){
     }
 
     function updateScore(){
-        
+
         /*
 
         This should provide feedback based on correct/incorrect answer. If incorrect, it should list what friend actually listened to 
@@ -79,14 +79,17 @@ $(function(){
 
         $('.js-gameform').remove();
         data.forEach(element => {
-            $('.js-results').append(
+            $('.js-results').addClass('active').append(
                 `
-                   <img src=${element.image[3]['#text']} alt="${element['name']} by ${element.artist['name']}" title="${element['name']} by ${element.artist['name']}"/> 
+                   <img class='flip-vertical-fwd' src=${element.image[3]['#text']} alt="${element['name']} by ${element.artist['name']}" title="${element['name']} by ${element.artist['name']}"/> 
                 `
             );
         });
     }
 
+   // $('img').click(function(){
+     //   $(this).toggleClass('flip-vertical-fwd','clicked');
+   // });
 
     function getFriendAlbumUrl(friends){
         friends.forEach(element => {
@@ -96,9 +99,7 @@ $(function(){
             .replace('YOUR_USER_NAME', element)
             .replace('DESIRED_TIMEFRAME', timeframe)
             $.getJSON(albumUrl)
-            //.then(json => console.log(json));
-            .then(json => displayAllAlbums([json.topalbums.album[0]]));
-            console.log(timeframe);
+            .then(json => displayAllAlbums([json.topalbums.album[0]]))
         });
     }
 
@@ -110,7 +111,6 @@ $(function(){
             return element.name;    
         });
         getFriendAlbumUrl(friendList);
-        //console.log(friendList)
     }
     
     function getTimeframe(){
@@ -128,7 +128,7 @@ $(function(){
         $('.js-results').html(
         `   <form action="" role="form" class='js-gameform'>
                 <label for="username">Last.fm User Name:</label>
-                <input type="text" id="username" size='35' required placeholder="Enter your Last.fm profile name here">
+                <input type="text" id="username" size='35' required placeholder="Enter a Last.fm Profile Name Here">
                 <fieldset>
                     <legend>Choose a timeframe:</legend>
                     <label for="week">Within Last Week:</label>
