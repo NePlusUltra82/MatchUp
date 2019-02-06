@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
     <head>
         <title>Last.fm MatchUp</title>
-        <meta>
+        <meta charset="utf-8">
+        <meta name="author" content="Derrell D. Page">
+        <meta name="description" content="A simple game based on your recently ACTIVE Last.fm friends and their listening habits.">
         <link rel="stylesheet" href="main.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     </head>
     <body>
         <header role="banner" class="js-intro">
             <h1>MatchUp</h1>
-            <p>Welcome to Last.fm MatchUp.</p>
-            <p>A simple game based on your recently ACTIVE Last.fm friends and their listening habits. 
+            <!-- <p class="header">Welcome to Last.fm MatchUp.</p> -->
+            <p class="header">A simple game based on your recently ACTIVE Last.fm friends and their listening habits. 
                 This game takes the username of any given Last.fm user and populates a 
                 current friends list and the top album each respective friend has listened to
                 over the last week, month, or year. These albums are then shuffled and your job 
@@ -18,13 +20,10 @@
             </p>
             <button type="submit">Let's Begin!</button>
         </header>
-
         <main role="main" class='js-results'> 
             <div class="photos">
-
             </div>     
         </main>
-
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="main.js"></script> 
     </body>

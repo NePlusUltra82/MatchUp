@@ -1,15 +1,4 @@
 
-/* Would it be possible to intergrate the Spotify API as follows:
-
-    1) Search for Artist/Album Name on Spotify using data from Last.fm 'Get Top Albums' API: 
-            https://www.last.fm/api/show/user.getTopAlbums
-
-    2) Render Spotify Player when image icon is clicked --- brings up album and all songs (individually selectable)
-
-*/
-
-
-
 $(function(){
 
     const access='39d2fb31f8cbb23a92524f7e541c9621';
@@ -81,7 +70,7 @@ $(function(){
         data.forEach(element => {
             $('.js-results').addClass('active').append(
                 `
-                   <img class='flip-vertical-fwd' src=${element.image[3]['#text']} alt="${element['name']} by ${element.artist['name']}" title="${element['name']} by ${element.artist['name']}"/> 
+                   <img  aria-live="assertive" class='flip-vertical-fwd' src=${element.image[3]['#text']} alt="${element['name']} by ${element.artist['name']}" title="${element['name']} by ${element.artist['name']}"/> 
                 `
             );
         });
@@ -99,6 +88,7 @@ $(function(){
                 .replace('YOUR_USER_NAME', element)
                 .replace('DESIRED_TIMEFRAME', timeframe)
             $.getJSON(albumUrl)
+                //.then(json => console.log([json.topalbums.album[0].image[3]['#text']]));
                 .then(json => displayAllAlbums([json.topalbums.album[0]]))
         });
     }
@@ -126,7 +116,7 @@ $(function(){
 
     function renderGame(){
         $('.js-results').html(
-        `   <form action="" role="form" class='js-gameform'>
+        `   <form action="" role="form" class='js-gameform' aria-live="polite">
                 <label for="username">Last.fm User Name:</label>
                 <input type="text" id="username" size='35' required placeholder="Enter a Last.fm Profile Name Here">
                 <fieldset>
@@ -146,12 +136,30 @@ $(function(){
         $('.js-gameform').submit(ev => {
             ev.preventDefault();
             const username = getUserName();
-            const url = LASTFM_USER_FRIENDS_URL
-                .replace('YOUR_API_KEY', access)
-                .replace('YOUR_USER_NAME', username);
-            $.getJSON(url)
-                //.then(json => console.log(json))
-                .then(json => getUserFriendList(json));
+
+            let userData;
+
+            // Username lookup
+            $.getJSON(`http://ws.audioscrobbler.com/2.0/?method=user.getinfo&user=${username}&api_key=${access}&format=json`)
+                .then(payload => {
+                    userData = payload.user
+
+                    const url = LASTFM_USER_FRIENDS_URL
+                        .replace('YOUR_API_KEY', access)
+                        .replace('YOUR_USER_NAME', username);
+
+                    return $.getJSON(url)
+                })
+                .then(json => getUserFriendList(json))
+                .catch(err => {
+                    if (err.status === 404) {
+                        alert(`User does not exist`)
+                    }
+                    else {
+                        console.error(err)
+                        alert(`Something went wrong`)
+                    }
+                })
         });
     }
 });
