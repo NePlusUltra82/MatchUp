@@ -13,11 +13,36 @@ $(function(){
     let QUESTIONS = 0;
 
 
+    page('/', () => {
+        console.log('I should show the home page')
+
+        const html = $('#home-tpl').html()
+        $('.js-results').html(html)
+    })
+    page('/start', () => {
+        console.log('I should show the initial form')
+
+        const html = $('#entry-form-tpl').html()
+        $('.js-results').html(html)
+    })
+    page('/albums', () => {
+        console.log('I should show the albums listing')
+    })
+    page('/albums/:id', () => {
+        console.log('I should show the album challenge form')
+    })
+
+    // "Bootstraps" page.js (it starts to watch URLs)
+    page({ hashbang: true })
+
+
+    /*
     $('.js-intro').click(event => {
         event.preventDefault();
         $('.js-intro').remove();
         renderGame();
     });
+    */
 
     function updateScore() {
         SCORE++;

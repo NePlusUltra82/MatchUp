@@ -13,21 +13,27 @@
            <a class='title' href=''><h1 class='formHeader'>MatchUp</h1></a> 
         </header>
             <!-- <p class="header">Welcome to Last.fm MatchUp.</p> -->
-        <div class="js-intro">    
-            <p>A simple game based on your recently ACTIVE Last.fm friends and their listening habits. 
-                This game takes the username of any given Last.fm user and populates a 
-                current friends list and the top album each respective friend has listened to
-                over the last week, month, or year. These albums are then shuffled and your job 
-                is to match up the top album to the correct friend based on your knowledge of their taste in music.   
-            </p>
-            <button type="submit">Let's Begin!</button>
-        </div>
 
        
         <main role="main" class='js-results'>
         </main>
         <div class="photos">
         </div>
+
+        <script type="text/template" id="home-tpl">
+            <div class="js-intro">    
+                <p>A simple game based on your recently ACTIVE Last.fm friends and their listening habits. 
+                    This game takes the username of any given Last.fm user and populates a 
+                    current friends list and the top album each respective friend has listened to
+                    over the last week, month, or year. These albums are then shuffled and your job 
+                    is to match up the top album to the correct friend based on your knowledge of their taste in music.   
+                </p>
+                <p>
+                    <a href="/start">Start</a>
+                </p>
+                <button type="submit">Let's Begin!</button>
+            </div>
+        </script>
         
         <script type="text/template" id="entry-form-tpl">
             <form role="form" class='js-gameform' aria-live="polite">
@@ -48,6 +54,7 @@
             </form>
         </script>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="page.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
