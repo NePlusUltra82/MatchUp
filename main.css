@@ -6,11 +6,18 @@
 .active {
     display: block;
     background-color: rgb(0, 0, 0,.75);
-    margin-top: 10%;
+   /* margin-top: 10%;*/
     margin-bottom: 10%;
     width: 90%;
     height: 100%;
     border-radius: 5px;
+    border: 2px solid white;
+
+}
+
+.title, .title:visited, .title:focus {
+    text-decoration: none;
+    color: white;
 }
 
 .clicked {
@@ -31,6 +38,21 @@ img {
     bottom: 20px;    
 }
 
+.no-style {
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border: 1px white solid;
+    position: static;
+
+}
+
+p {
+    font-size: 25px;
+}
 fieldset {
     display: block;
     color: white;
@@ -47,12 +69,12 @@ fieldset {
     margin-top: 75px;
     margin-bottom: 25px;
     height: 150px;
-
-
 }
+
 h1 {
     font-size: 45px;
 }
+
 legend{
     font-size: 20px;
 }
@@ -95,54 +117,56 @@ form.input {
     font-style: italic;
 }
 
-.flip-vertical-fwd:active {
-	-webkit-animation: flip-vertical-fwd 0.85s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-            animation: flip-vertical-fwd 0.85s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-            
-}
-
-@-webkit-keyframes flip-vertical-fwd {
-    0% {
-      -webkit-transform: translateZ(0) rotateY(0);
-              transform: translateZ(0) rotateY(0);
-    }
-    100% {
-      -webkit-transform: translateZ(160px) rotateY(180deg);
-              transform: translateZ(160px) rotateY(180deg);
-              background: black;
-    }
-  }
-  @keyframes flip-vertical-fwd {
-    0% {
-      -webkit-transform: translateZ(0) rotateY(0);
-              transform: translateZ(0) rotateY(0);
-    }
-    100% {
-      -webkit-transform: translateZ(160px) rotateY(180deg);
-              transform: translateZ(160px) rotateY(180deg);
-    }
-  }
-  
-
 body {
     background: no-repeat fixed  url('https://images.mentalfloss.com/sites/default/files/styles/mf_image_16x9/public/62536-istock-840767090.jpg?itok=8BVrL5dB&resize=1100x1100');
     background-size: cover;
     color: white;
 }
 
-header, form {
+.formHeader {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    font-size: 95px;
+    position: static;
+    height: auto;
+    width: 40%;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: rgb(0, 0, 0,.75);
+
+}
+
+.hidden {
+    display: none;
+}
+
+.js-intro, .js-gameform {
     height: 450px;
     width: 900px;
     background-color: rgb(0, 0, 0,.75);
     text-align: center;
     padding: 20px;
     border-radius: 10px;
-    margin-top: 15%;
+    border: 2px solid white;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
 }
 
-
+.answer-form {
+    height: 450px;
+    width: 900px;
+    background-color: rgb(0, 0, 0,.75);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid white;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 main {
     display: block;
@@ -150,3 +174,4 @@ main {
     margin-left: auto;
     margin-right: auto;
 }
+
