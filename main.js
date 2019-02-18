@@ -11,57 +11,83 @@ $(function(){
 
     let SCORE = 0;
     let QUESTIONS = 0;
+    let numberAnswered = 0;
 
-
-    $('.js-intro').click(event => {
-        event.preventDefault();
-        $('.js-intro').remove();
-        renderGame();
-    });
-
-    function updateScore() {
-        SCORE++;
-        console.log(`Current Score: ${SCORE}/${QUESTIONS}`);   
-    }
 
     function renderFeedback(data1, data2){
-        $('.answer-form').toggleClass('hidden');
+        //const selectedAlbum = $(this).attr('src');
 
-        $('.js-results').toggleClass('hidden');
-
-        if (data1 === data2 ){
-            console.log('correct');
-            updateScore();
+        //Feedback if CORRECT and IS NOT last question
+        if (data1 === data2 && numberAnswered !== QUESTIONS){
+            $('.photos').html(`
+            <div  class="js-feedbackForm">  
+            <img  aria-live="assertive" class='album no-style' src=${data1}/>
+            <p>CORRECT</p>
+            <button>NEXT</button>
+            </div>
+            `);
+            $('button').click(() => {
+                $('.js-feedbackForm').addClass('hidden');
+                $('.js-results').toggleClass('hidden');
+            }); 
+            SCORE++;x
         }
-        else if (data2 === 'images/default-album-image.jpg') {
-            console.log('correct')
-            updateScore();
-
+        //Feedback if CORRECT AND IS last Question
+        else if (numberAnswered === QUESTIONS && data1 === data2){
+            SCORE++;
+            $('.photos').html(`
+            <div  class="js-feedbackForm"> 
+            <img  aria-live="assertive" class='album no-style' src=${data1}/>
+            <p>CORRECT</p> 
+            <p>FINAL SCORE IS: ${SCORE}/${QUESTIONS}</p>  
+            <button>PLAY AGAIN!</button>
+            </div>
+            `);
+            $('button').click(() => {
+                $('.js-feedbackForm').addClass('hidden');
+                $('.js-results').toggleClass('hidden');
+                location.reload(true);
+            });       
+        }  
+        //Feedback if INCORRECT and IS last question
+        else if (numberAnswered === QUESTIONS && data1 !== data2) {
+            $('.photos').html(`
+            <div  class="js-feedbackForm">
+            <img  aria-live="assertive" class='album no-style' src=${data1}/>
+            <p>INCORRECT</p>  
+            <p>FINAL SCORE IS: ${SCORE}/${QUESTIONS}</p>  
+            <button>PLAY AGAIN!</button>
+            </div>
+            `);
+            $('button').click(() => {
+                $('.js-feedbackForm').addClass('hidden');
+                $('.js-results').toggleClass('hidden');
+                location.reload(true);
+            }); 
 
         }
+        //Feedback if INCORRECT and IS NOT last question
         else {
-            console.log('incorrect');
-            console.log(`Current Score: ${SCORE}/${QUESTIONS}`);
+            $('.photos').html(`
+            <div  class="js-feedbackForm">
+            <img  aria-live="assertive" class='album no-style' src=${data1}/>
+            <p>INCORRECT</p> 
+            <button>NEXT</button>
+            </div>
+            `);
+            $('button').click(() => {
+                $('.js-feedbackForm').addClass('hidden');
+                $('.js-results').toggleClass('hidden');
+            }); 
         }
-        
-       
-       /* This should provide feedback based on correct/incorrect answer. If incorrect, it should list what friend actually listened to 
-        the album immediately and update the total score then proceed to next album. Perhaps use an animation that flips the album image
-        around to a blank colored background with the actual user's profile image displayed and then remove it from the DOM and adjust/
-        rearrange the remaining albums and repeat until NO albums are left ---only a FINAL feedback page listing the overall score
-        maybe create: renderFinalFeedback() for this purpose? */
-          
     }
-    
-    
-    function displayAnswers(){ 
+       
+    function displayAnswerOptions(){ 
         //recieves an array of user topalbum objects. displays the username and corresponding top album in a select menu for the user to use for selecting their answer
         $('.album').click( function(){
             const selectedAlbum = $(this).attr('src');
-            $('.js-results').toggleClass('hidden');
-
+            $('.js-results').addClass('hidden');
             $('.photos').html(
-
                 ` 
                 <div class='answer-form'>
                 <form class='working'>
@@ -75,8 +101,10 @@ $(function(){
                 `
             );
 
-           // $('.answer-form').toggleClass('hidden');
+            //Randomizes the album images created
+            friendArray.sort(() => Math.random() - 0.5);
 
+            //renders randomized options to drop down menu
             friendArray.forEach(element => {
                 $('#answer-select').append(
                     `
@@ -85,17 +113,18 @@ $(function(){
                 );
             }); 
 
+            //User selects an answer from the drop down menu
             $('#answer-select').change(() => {
                 const userAnswer = $('#answer-select').val();
                 $(this).submit();    
                 event.preventDefault();
-                console.log(userAnswer);
-                renderFeedback(selectedAlbum, userAnswer); 
+                $(this).toggleClass('hidden');
+                numberAnswered++;
+                $('.answer-form').toggleClass('hidden');
+                //$('.js-results').toggleClass('hidden');
+                renderFeedback(selectedAlbum, userAnswer);
             });
-            $(this).toggleClass('hidden');
-
-        });
-
+        });   
     } 
 
     function displayAllAlbums(data){
@@ -105,16 +134,7 @@ $(function(){
             const albumName = element.topalbums.album[0]['name'];
             const albumArtist = element.topalbums.album[0].artist['name'];
             if (albumArtURL === ""){
-                //displays DEFAULT album art if there is none avail/listed on last.fm api
-              /*  $('.js-results').addClass('active').append(
-                    `
-                    <img  aria-live="assertive" class='album' src='images/default-album-image.jpg' alt="${albumName} by ${albumArtist}" title="${albumName} by ${albumArtist}"/> 
-                    `
-                );
-                
-                */
-                //increments when each photo is rendered ---provides the total # of photos aka questions
-               // QUESTIONS++;
+                //Skips album if there is none avail/listed on last.fm api
                 return;
             }
             //Skips over any albums that may have incomplete/mislabed metadata 
@@ -131,10 +151,10 @@ $(function(){
                 QUESTIONS++;
             } 
         });
-       displayAnswers();
+       displayAnswerOptions();
     }
 
-    function getFriendAlbumUrl(friends){
+    function getFriendTopAlbum(friends){ 
         friends.forEach(element => {
             const timeframe = getTimeframe();
             const albumUrl = LASTFM_TOP_ALBUMS_URL
@@ -158,7 +178,7 @@ $(function(){
        const friendList = data.friends.user.map(element => {
             return element.name;    
         });
-        getFriendAlbumUrl(friendList);     
+        getFriendTopAlbum(friendList);     
     }
     
     function getTimeframe(){
@@ -212,4 +232,14 @@ $(function(){
         
         return $.getJSON(`http://ws.audioscrobbler.com/2.0/?${params}`)
     }
+
+    function startGame(){
+        $('.js-intro').click(event => {
+            event.preventDefault();
+            $('.js-intro').remove();
+            renderGame();
+        });
+    }
+  
+    startGame();
 });
