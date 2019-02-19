@@ -86,13 +86,14 @@ $(function(){
         //recieves an array of user topalbum objects. displays the username and corresponding top album in a select menu for the user to use for selecting their answer
         $('.album').click( function(){
             const selectedAlbum = $(this).attr('src');
+            const selectedAlbumAlternateText = $(this).attr('alt');
             $('.js-results').addClass('hidden');
             $('.photos').html(
                 ` 
                 <div class='answer-form'>
                 <form class='working'>
                     <label for="answer-select">Choose the username associated with this album:</label>
-                    <img  aria-live="assertive" class='album no-style' src=${selectedAlbum} />
+                    <img  aria-live="assertive" class='album no-style' src=${selectedAlbum} alt='${selectedAlbumAlternateText}'/>
                     <select id="answer-select">
                         <option value="">--Please choose an option--</option>
                     </select>
