@@ -18,6 +18,11 @@ I chose this project because of my love for music and music discovery.
 Screenshots
 ------------------------------------------------------------------------------------------------------------------------------
 
+Live Demo
+------------------------------------------------------------------------------------------------------------------------------
+
+https://neplusultra82.github.io/MatchUp/
+
 Landing Page / Intro Screen:
 
 ![image](https://user-images.githubusercontent.com/19257040/52981788-d00af200-3396-11e9-990f-750de11bd540.png)
