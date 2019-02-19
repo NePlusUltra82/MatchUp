@@ -6,11 +6,11 @@ A matching game based on user listening data from the last.fm music platform.
 About
 ------------------------------------------------------------------------------------------------------------------------------
 
-A simple game based on your recently ACTIVE Last.fm friends and their listening habits. 
+A simple game based on your recently active Last.fm friends and their listening habits. 
 This game takes the username of any given Last.fm user and populates a current friends list and the top album each respective friend has listened to over the last week, month, year or overall. These albums are then shuffled and your job is to match up the top album to the correct friend based on your knowledge of their taste in music.
 
 
-Motiviation
+Motivation
 ------------------------------------------------------------------------------------------------------------------------------
 
 To create an application using multiple APIs. 
