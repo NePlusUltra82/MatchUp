@@ -7,7 +7,8 @@ About
 ------------------------------------------------------------------------------------------------------------------------------
 
 A simple game based on your recently ACTIVE Last.fm friends and their listening habits. 
-This game takes the username of any given Last.fm user and populates a current friends list and the top album each respective friend has listened to over the last week, month, or year. These albums are then shuffled and your job is to match up the top album to the correct friend based on your knowledge of their taste in music.
+This game takes the username of any given Last.fm user and populates a current friends list and the top album each respective friend has listened to over the last week, month, year or overall. These albums are then shuffled and your job is to match up the top album to the correct friend based on your knowledge of their taste in music.
+
 
 Motiviation
 ------------------------------------------------------------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Live Demo
 
 https://neplusultra82.github.io/MatchUp/
 
+Use 'Neplusultra82' for an example.
+
 
 
 Screenshots
@@ -31,7 +34,7 @@ Landing Page / Intro Screen:
 
 Start Page:
 
-![image](https://user-images.githubusercontent.com/19257040/52981825-00eb2700-3397-11e9-8f82-323266a6a015.png)
+![image](https://user-images.githubusercontent.com/19257040/52986011-22eea480-33ab-11e9-8f49-12be1c42501c.png)
 
 Album Listing / Selection Page:
 
