@@ -15,13 +15,15 @@ Motiviation
 To create an application using multiple APIs. 
 I chose this project because of my love for music and music discovery.
 
-Screenshots
-------------------------------------------------------------------------------------------------------------------------------
-
 Live Demo
 ------------------------------------------------------------------------------------------------------------------------------
 
 https://neplusultra82.github.io/MatchUp/
+
+
+
+Screenshots
+------------------------------------------------------------------------------------------------------------------------------
 
 Landing Page / Intro Screen:
 
