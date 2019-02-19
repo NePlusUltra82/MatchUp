@@ -3,9 +3,9 @@ $(function(){
 
     const access='39d2fb31f8cbb23a92524f7e541c9621';
 
-    const LASTFM_TOP_ALBUMS_URL="http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=YOUR_USER_NAME&period=DESIRED_TIMEFRAME&api_key=YOUR_API_KEY&format=json";
+    const LASTFM_TOP_ALBUMS_URL="https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=YOUR_USER_NAME&period=DESIRED_TIMEFRAME&api_key=YOUR_API_KEY&format=json";
     
-    const LASTFM_USER_FRIENDS_URL="http://ws.audioscrobbler.com/2.0/?method=user.getfriends&user=YOUR_USER_NAME&limit=500&api_key=YOUR_API_KEY&format=json"
+    const LASTFM_USER_FRIENDS_URL="https://ws.audioscrobbler.com/2.0/?method=user.getfriends&user=YOUR_USER_NAME&limit=500&api_key=YOUR_API_KEY&format=json"
 
     const friendArray = [];
 
@@ -230,7 +230,7 @@ $(function(){
             .map(([key, val]) => `${key}=${val}`)
             .join('&')
         
-        return $.getJSON(`http://ws.audioscrobbler.com/2.0/?${params}`)
+        return $.getJSON(`https://ws.audioscrobbler.com/2.0/?${params}`)
     }
 
     function startGame(){
